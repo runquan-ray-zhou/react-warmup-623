@@ -8,7 +8,8 @@ import WorkoutDetails from "./components/workout/WorkoutDetails";
 import CreateWorkout from "./components/createWorkout/CreateWorkout";
 
 function App() {
-  const [workoutList, setWorkoutList] = useState([
+  const [workoutList, setWorkoutList] = useState(
+  [
     {
       id: 1,
       name: "Morning Run",
@@ -23,10 +24,16 @@ function App() {
       duration: "45 minutes",
       calories: 200,
     },
-  ]);
+  ]
+);
+
+console.log(workoutList)
 
   // Function to add a new workout
-  const addWorkout = () => {};
+  const addWorkout = (newWorkOut) => {
+    const newWorkoutList = structuredClone([...workoutList, newWorkOut])
+    setWorkoutList(newWorkoutList)
+  };
 
   return (
     <div className="App">
