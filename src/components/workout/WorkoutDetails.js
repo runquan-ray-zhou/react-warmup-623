@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 
 const WorkoutDetails = ({ workoutList }) => {
   const { id } = useParams();
-  const workout = workoutList.find((workout) => workout.id === parseInt(id));
+  const workout = workoutList.find((workout) => workout.id === id);
 
   if (!workout) {
     return <div>Workout not found</div>;
   }
+
+  console.log(workoutList)
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./components/home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Workouts from "./components/workouts/Workouts";
@@ -8,32 +8,32 @@ import WorkoutDetails from "./components/workout/WorkoutDetails";
 import CreateWorkout from "./components/createWorkout/CreateWorkout";
 
 function App() {
+
   const [workoutList, setWorkoutList] = useState(
-  [
-    {
-      id: 1,
-      name: "Morning Run",
-      date: "2023-06-21",
-      duration: "30 minutes",
-      calories: 300,
-    },
-    {
-      id: 2,
-      name: "Evening Yoga",
-      date: "2023-06-22",
-      duration: "45 minutes",
-      calories: 200,
-    },
-  ]
-);
+    [
+      {
+        id: 1,
+        name: "Morning Run",
+        date: "2023-06-21",
+        duration: "30 minutes",
+        calories: 300,
+      },
+      {
+        id: 2,
+        name: "Evening Yoga",
+        date: "2023-06-22",
+        duration: "45 minutes",
+        calories: 200,
+      },
+    ]
+  );
 
-console.log(workoutList)
 
-  // Function to add a new workout
-  const addWorkout = (newWorkOut) => {
-    const newWorkoutList = structuredClone([...workoutList, newWorkOut])
-    setWorkoutList(newWorkoutList)
-  };
+// Function to add a new workout
+const addWorkout = (newWorkOut) => {
+  const newWorkoutList = structuredClone([...workoutList, newWorkOut])
+  setWorkoutList(newWorkoutList)
+};
 
   return (
     <div className="App">

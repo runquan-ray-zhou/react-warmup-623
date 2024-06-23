@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateWorkout = ({ addWorkout }) => {
+
+  let navigate = useNavigate();
 
   const [newWorkout, setNewWorkout] = useState({
     id: "",
@@ -18,6 +21,7 @@ const CreateWorkout = ({ addWorkout }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addWorkout(newWorkout)
+    navigate(`/workouts/${newWorkout.id}`)
   };
 
   return (
@@ -26,7 +30,7 @@ const CreateWorkout = ({ addWorkout }) => {
       <form onSubmit={handleSubmit}>
         <label>
         <p>Workout ID</p>
-        <input onChange={handleTextChange} type="number" id="id" value={newWorkout.id}/>
+        <input onChange={handleTextChange} type="number" id="id" value={Number(newWorkout.id)}/>
         </label>
         <br />
         <label>
@@ -46,7 +50,7 @@ const CreateWorkout = ({ addWorkout }) => {
         <br />
         <label>
         <p>Calories Burn</p>
-        <input onChange={handleTextChange} type="number" id="calories" value={newWorkout.calories}/>
+        <input onChange={handleTextChange} type="number" id="calories" value={Number(newWorkout.calories)}/>
         </label>
         <br />
         <br />
